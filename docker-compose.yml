@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  # BASE 1: Relacional (PostgreSQL)
+  postgres:
+    image: postgres:15
+    container_name: trabalho_postgres
+    environment:
+      POSTGRES_USER: aluno
+      POSTGRES_PASSWORD: senha123
+      POSTGRES_DB: loja_relacional
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - rede_integracao
+
+  # BASE 2: Orientado a Documentos (MongoDB)
+  mongo:
+    image: mongo:6.0
+    container_name: trabalho_mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: aluno
+      MONGO_INITDB_ROOT_PASSWORD: senha123
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - rede_integracao
+
+  # BASE 3: Orientado a Grafos (Neo4j)
+  neo4j:
+    image: neo4j:5.12
+    container_name: trabalho_neo4j
+    environment:
+      NEO4J_AUTH: neo4j/senha12345
+      # Configuração para permitir acesso de qualquer IP (necessário para o container)
+      NEO4J_dbms_default__listen__address: 0.0.0.0
+    ports:
+      - "7474:7474"   # Interface HTTP (Browser do Neo4j)
+      - "7687:7687"   # Porta Bolt (Para conexão via código)
+    volumes:
+      - neo4j_data:/data
+    networks:
+      - rede_integracao
+
+  # BASE 4: Chave-Valor (Redis)
+  redis:
+    image: redis:7.0
+    container_name: trabalho_redis
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass senha123
+    volumes:
+      - redis_data:/data
+    networks:
+      - rede_integracao
+
+  # Ferramenta opcional para visualizar o Redis (Redis Commander)
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: ui_redis
+    environment:
+      REDIS_HOSTS: "local:redis:6379"
+      REDIS_PASSWORD: senha123
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    networks:
+      - rede_integracao
+
+volumes:
+  postgres_data:
+  mongo_data:
+  neo4j_data:
+  redis_data:
+
+networks:
+  rede_integracao:
+    driver: bridge
