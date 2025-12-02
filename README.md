@@ -120,7 +120,10 @@ A interface web consulta exclusivamente o **Redis**, demonstrando a eficiência 
 ## 👥 Autores
 
 Trabalho desenvolvido pelos acadêmicos:
-**Gabriel**
-João Minski
+**Barbara Moeller**
+**Gabriel Victor Rosário**
+**João Minski**
+**Micheli Wallker**
+
 
 **Professor:** Monica Tissiani De Toni Pereira
