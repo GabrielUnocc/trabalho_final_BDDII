@@ -123,7 +123,7 @@ Trabalho desenvolvido pelos acadêmicos:
 **Barbara Moeller**
 **Gabriel Victor Rosário**
 **João Minski**
-**Micheli Wallker**
+**Michelli Riffel Wallker**
 
 
 **Professor:** Monica Tissiani De Toni Pereira
