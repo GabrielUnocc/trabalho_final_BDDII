@@ -117,13 +117,9 @@ A interface web consulta exclusivamente o **Redis**, demonstrando a eficiência 
 
 ---
 
-## 👥 Autores
+## 👥 Autor
 
-Trabalho desenvolvido pelos acadêmicos:
-**Barbara Moeller**
+Trabalho desenvolvido pelo acadêmico:
 **Gabriel Victor Rosário**
-**João Minski**
-**Michelli Riffel Wallker**
-
 
 **Professor:** Monica Tissiani De Toni Pereira
